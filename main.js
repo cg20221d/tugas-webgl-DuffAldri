@@ -8,7 +8,7 @@ function main() {
 
     // Koordinat titik-titik
     var vertices = [
-        // Angka 1 - 0 - 10
+        // Angka 1 - 0 - 10, n = 11
         -0.85, 0.0,
         -0.35, 0.0,
         -0.35, 0.2,
@@ -21,16 +21,30 @@ function main() {
         -0.7, 0.2,
         -0.85, 0.2,
 
-        // Angka 7 - 11 - 17
+        // Angka 7 - 11 - 17, n = 7
         -0.2, 0,
         0, 0,
         0.2, 0.6,
         0.2, 0.8,
         -0.3, 0.8,
         -0.3, 0.6,
-        0, 0.6
+        0, 0.6,
+
+        // Huruf M - 18 - 31. n = 13
+        -0.8, 0.0,
+        -0.6, 0.0,
+        -0.6, 0.8,
+        -0.5, 0.4,
+        -0.4, 0.8,
+        -0.4, 0.0,
+        -0.3, 0.4, // Bagian tengah M
+        -0.2, 0.0,
+        -0.2, 0.8,
+        -0.1, 0.4,
+        0, 0.8,
+        0, 0,
+        0.2, 0,
         
-        // Huruf M
 
         // Huruf A
     ];
@@ -76,8 +90,9 @@ function main() {
     gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(aPosition);
 
-    gl.drawArrays(gl.LINE_LOOP, 0, 11);
-    gl.drawArrays(gl.LINE_LOOP, 11, 7);
+    // gl.drawArrays(gl.LINE_LOOP, 0, 11);
+    // gl.drawArrays(gl.LINE_LOOP, 11, 7);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 18, 13);
 }
 
 window.onload = main;
