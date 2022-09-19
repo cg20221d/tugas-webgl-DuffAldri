@@ -30,23 +30,40 @@ function main() {
         -0.3, 0.6,
         0, 0.6,
 
-        // Huruf M - 18 - 31. n = 13
-        -0.8, 0.0,
-        -0.6, 0.0,
-        -0.6, 0.8,
-        -0.5, 0.4,
+        // Huruf M - 18 - 31. n = 15
+        -0.8375, -0.15,
+        -0.6375, -0.15,
+        -0.6, 0.8, // Kiri atas
+        -0.5, 0.4, // Tengah kiri
         -0.4, 0.8,
         -0.4, 0.0,
-        -0.3, 0.4, // Bagian tengah M
+        -0.3, 0.3, // Bagian tengah M
         -0.2, 0.0,
         -0.2, 0.8,
-        -0.1, 0.4,
-        0, 0.8,
+        -0.1, 0.4, // Tengah kanan
+        0, 0.8, // Kanan atas
         0, 0,
-        0.2, 0,
+        // 0.2, 0, // Kanan bawah
+        0.15, 0.2,
+        0.55, 0,
+        0.7, 0.2,
+        0.5875, -0.15,
+        0.7875, -0.15,
         
+        0.1125, -0.15,
+        0.3125, -0.15,
+        0.1425, -0.03,
+        0.3425, -0.03,
 
-        // Huruf A
+        // Huruf A - 32 - 38, n = 7
+        0.6925, 0.23,
+        0.4925, 0.23,
+        0.55, 0.8,
+        0.45, 0.4, // Tengah
+        0.35, 0.8,
+        0.4075, 0.23,
+        0.2075, 0.23
+
     ];
 
     var buffer = gl.createBuffer();
@@ -92,7 +109,9 @@ function main() {
 
     // gl.drawArrays(gl.LINE_LOOP, 0, 11);
     // gl.drawArrays(gl.LINE_LOOP, 11, 7);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 18, 13);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 18, 17);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 35, 4);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 39, 7);
 }
 
 window.onload = main;
