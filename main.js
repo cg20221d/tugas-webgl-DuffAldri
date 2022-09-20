@@ -8,27 +8,54 @@ function main() {
 
     // Koordinat titik-titik
     var vertices = [
-        // Angka 1 - 0 - 10, n = 11
-        -0.825, 0.0,
-        -0.575, 0.0,
-        -0.575, 0.2,
-        -0.65, 0.2,
-        -0.65, 0.8,
-        -0.75, 0.8,
-        -0.825, 0.7,
-        -0.825, 0.5,
-        -0.75, 0.6,
-        -0.75, 0.2,
-        -0.825, 0.2,
+        // // Angka 1 - 0 - 10, n = 11
+        // -0.825, 0.0,
+        // -0.575, 0.0,
+        // -0.575, 0.2,
+        // -0.65, 0.2,
+        // -0.65, 0.8,
+        // -0.75, 0.8,
+        // -0.825, 0.7,
+        // -0.825, 0.5,
+        // -0.75, 0.6,
+        // -0.75, 0.2,
+        // -0.825, 0.2,
+        -0.4825, -0.132,
+        -0.465, -0.066,
+        -0.665, -0.066,
+        -0.5175, 0.53,
+        -0.5775, 0.53,
+        -0.6275, 0.43,
+        -0.5925, 0.43,
+        -0.715, -0.066,
+        -0.805, -0.066,
+        -0.8215, -0.132,
 
-        // Angka 7 - 11 - 17, n = 7
+
+
+        // // Angka 7 - 11 - 17, n = 7
+        // -0.5, 0,
+        // -0.4, 0,
+        // -0.3, 0.6,
+        // -0.3, 0.8,
+        // -0.55, 0.8,
+        // -0.55, 0.6,
+        // -0.4, 0.6,
+
+        -0.45, 0,
+        -0.25, 0.8,
+        -0.60, 0.8,
+        -0.60, 0.6,
+        -0.45, 0.6,
+        -0.60, 0,
+        -0.55, 0,
+        -0.385, 0.66,
+        -0.55, 0.66,
+        -0.55, 0.72,
+        -0.32, 0.72,
         -0.5, 0,
-        -0.4, 0,
-        -0.3, 0.6,
-        -0.3, 0.8,
-        -0.55, 0.8,
-        -0.55, 0.6,
-        -0.4, 0.6,
+
+
 
         // Huruf M - 18 - 31. n = 15
         -0.31875, -0.15,
@@ -62,7 +89,26 @@ function main() {
         0.326, 0.4, // Tengah
         0.275, 0.8,
         0.30375, 0.23,
-        0.20325, 0.23
+        0.20325, 0.23,
+
+        // Mata kucing, tengah = -0.05, -0.08
+        -0.07, -0.05,
+        -0.11, -0.05,
+        -0.11, -0.1,
+        -0.07, -0.1,
+
+        -0.03, -0.05,
+        0.01, -0.05,
+        0.01, -0.1,
+        -0.03, -0.1,
+
+        -0.095, -0.125,
+        -0.095, -0.155,
+        -0.058, -0.155,
+        -0.058, -0.125,
+        -0.058, -0.155,
+        -0.021, -0.155,
+        -0.021, -0.125 
 
     ];
 
@@ -106,12 +152,16 @@ function main() {
     var aPosition = gl.getAttribLocation(shaderProgram, 'aPosition');
     gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(aPosition);
-
-    gl.drawArrays(gl.LINE_LOOP, 0, 11);
-    gl.drawArrays(gl.LINE_LOOP, 11, 7);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 18, 17);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 35, 4);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 39, 7);
+    
+    gl.drawArrays(gl.LINE_LOOP, 0, 10);
+    gl.drawArrays(gl.LINE_LOOP, 10, 12);
+    // // gl.drawArrays(gl.LINE_LOOP, 11, 7);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 22, 17);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 39, 4);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 43, 7);
+    gl.drawArrays(gl.TRIANGLE_FAN, 50, 4);
+    gl.drawArrays(gl.TRIANGLE_FAN, 54, 4);
+    gl.drawArrays(gl.LINE_STRIP, 58, 7);
 }
 
 window.onload = main;
