@@ -3,7 +3,7 @@ function main() {
     var gl = canvas.getContext("webgl");
 
     // Warna canvas-nya
-    gl.clearColor(0.1, 0.1, 0.1, 1);
+    gl.clearColor(0.125, 0.125, 0.15, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // Koordinat titik-titik
