@@ -9,17 +9,6 @@ function main() {
     // Koordinat titik-titik
     var vertices = [
         // // Angka 1 - 0 - 10, n = 11
-        // -0.825, 0.0,
-        // -0.575, 0.0,
-        // -0.575, 0.2,
-        // -0.65, 0.2,
-        // -0.65, 0.8,
-        // -0.75, 0.8,
-        // -0.825, 0.7,
-        // -0.825, 0.5,
-        // -0.75, 0.6,
-        // -0.75, 0.2,
-        // -0.825, 0.2,
         -0.4825, -0.132,
         -0.465, -0.066,
         -0.665, -0.066,
@@ -31,17 +20,7 @@ function main() {
         -0.805, -0.066,
         -0.8215, -0.132,
 
-
-
-        // // Angka 7 - 11 - 17, n = 7
-        // -0.5, 0,
-        // -0.4, 0,
-        // -0.3, 0.6,
-        // -0.3, 0.8,
-        // -0.55, 0.8,
-        // -0.55, 0.6,
-        // -0.4, 0.6,
-
+        // // Angka 7
         -0.45, 0,
         -0.25, 0.8,
         -0.60, 0.8,
@@ -54,8 +33,6 @@ function main() {
         -0.55, 0.72,
         -0.32, 0.72,
         -0.5, 0,
-
-
 
         // Huruf M - 18 - 31. n = 15
         -0.31875, -0.15,
@@ -101,14 +78,15 @@ function main() {
         0.01, -0.05,
         0.01, -0.1,
         -0.03, -0.1,
-
-        -0.095, -0.125,
-        -0.095, -0.155,
-        -0.058, -0.155,
-        -0.058, -0.125,
-        -0.058, -0.155,
-        -0.021, -0.155,
-        -0.021, -0.125 
+        
+        // Mulut kucing
+        -0.09, -0.125,
+        -0.09, -0.155,
+        -0.055, -0.155,
+        -0.055, -0.125,
+        -0.055, -0.155,
+        -0.018, -0.155,
+        -0.018, -0.125 
 
     ];
 
@@ -119,20 +97,29 @@ function main() {
     // Vertex shader
     var vertexShaderCode = `
         attribute vec2 aPosition;
+        varying vec2 position;
         void main() {
-            gl_PointSize = 10.0;
-            gl_Position = vec4(aPosition.xy, 0, 1);
+            position = aPosition;
+            gl_PointSize = 20.0;
+            gl_Position = vec4(aPosition.x + 0.125, aPosition.y - 0.2775, 0, 1);
         }
     `;
     var vertexShaderObject = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertexShaderObject, vertexShaderCode);
     gl.compileShader(vertexShaderObject);
-
+    
     // Fragment shader
     var fragmentShaderCode = `
+        precision mediump float;
+        varying vec2 position;
+
+        // float colorValue (float pos, float minValue, float maxValue) {
+        //     return (maxValue - minValue) * pos.x + minValue;
+        // }
+
         void main() {
-            precision mediump float;
-            float r = 0.0;
+            
+            float r = (position.x + position.y)/2.0 + 0.4;
             float g = 0.1;
             float b = 1.0;
             gl_FragColor = vec4(r, g, b, 1);
