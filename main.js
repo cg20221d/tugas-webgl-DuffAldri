@@ -8,7 +8,7 @@ function main() {
 
     // Koordinat titik-titik
     var vertices = [
-        // // Angka 1 - 0 - 10, n = 11
+        // // Angka 1 | 0 - 9, n = 10
         -0.4825, -0.132,
         -0.465, -0.066,
         -0.665, -0.066,
@@ -20,7 +20,7 @@ function main() {
         -0.805, -0.066,
         -0.8215, -0.132,
 
-        // // Angka 7
+        // // Angka 7 | 10 - 21, n = 12
         -0.45, 0,
         -0.25, 0.8,
         -0.60, 0.8,
@@ -34,7 +34,7 @@ function main() {
         -0.32, 0.72,
         -0.5, 0,
 
-        // Huruf M - 18 - 31. n = 15
+        // Huruf M | 22 - 35, n = 13
         -0.31875, -0.15,
         -0.21875, -0.15,
         -0.2, 0.8, // Kiri atas
@@ -47,19 +47,23 @@ function main() {
         0.05, 0.4, // Tengah kanan
         0.1, 0.8, // Kanan atas
         0.1, 0,
-        // 0.2, 0, // Kanan bawah
-        0.175, 0.2,
+        0.175, 0.2, // Kanan bawah, perbatasan dengan A
+
+        // Huruf A strip tengah & kaki kanan | 34 - 38. n = 5
+        0.1, 0,  // Kanan bawah, perbatasan dengan A 
+        0.175, 0.2, // Kanan bawah, perbatasan dengan A 
         0.375, 0,
         0.45, 0.2,
         0.39375, -0.15,
         0.49375, -0.15,
         
+        // Kaki A kaki kiri kiri | 39 - 42, n = 4
         0.15625, -0.15,
         0.25625, -0.15,
         0.17125, -0.03,
         0.27125, -0.03,
 
-        // Huruf A - 32 - 38, n = 7
+        // Huruf A bagian atas | 43 - 49, n = 7
         0.44625, 0.23,
         0.34625, 0.23,
         0.375, 0.8,
@@ -143,12 +147,15 @@ function main() {
     gl.drawArrays(gl.LINE_LOOP, 0, 10);
     gl.drawArrays(gl.LINE_LOOP, 10, 12);
     // // gl.drawArrays(gl.LINE_LOOP, 11, 7);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 22, 17);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 39, 4);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 43, 7);
-    gl.drawArrays(gl.TRIANGLE_FAN, 50, 4);
-    gl.drawArrays(gl.TRIANGLE_FAN, 54, 4);
-    gl.drawArrays(gl.LINE_STRIP, 58, 7);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 22, 13);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 35, 6);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 41, 4);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 45, 7);
+
+    // Kucing
+    gl.drawArrays(gl.TRIANGLE_FAN, 52, 4);
+    gl.drawArrays(gl.TRIANGLE_FAN, 56, 4);
+    gl.drawArrays(gl.LINE_STRIP, 60, 7);
 }
 
 window.onload = main;
