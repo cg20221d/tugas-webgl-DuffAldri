@@ -10,3 +10,9 @@ Gabungan String :
 Hasil:
 
 ![Output WebGL](./assets/screenshot.jpg)
+
+## Tugas 2
+Hasil:
+![Tugas 2](./assets/tugas2.jpg)
+
+https://duffaldri.com/+WebGLDup
