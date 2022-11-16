@@ -178,6 +178,76 @@ function main() {
 
     ];
 
+    var vertices1 = [
+        // Depan
+        -1.447500, -0.396000, 0,                1, 0, 1,
+        -1.395000, -0.198000, 0,                1, 0, 1,
+        -1.995000, -0.198000, 0,                1, 0, 1,
+        -1.552500, 1.590000, 0,         1, 0, 1,
+        -1.732500, 1.590000, 0,         1, 0, 1,
+        -1.882500, 1.290000, 0,         1, 0, 1,
+        -1.777500, 1.290000, 0,         1, 0, 1,
+        -2.145000, -0.198000, 0,                1, 0, 1,
+        -2.415000, -0.198000, 0,                1, 0, 1,
+        -2.464500, -0.396000, 0,                1, 0, 1,
+        // Belakang
+        -1.447500, -0.396000, -1,               0.5, 0, 0.5,
+        -1.395000, -0.198000, -1,               0.5, 0, 0.5,
+        -1.995000, -0.198000, -1,               0.5, 0, 0.5,
+        -1.552500, 1.590000, -1,                0.5, 0, 0.5,
+        -1.732500, 1.590000, -1,                0.5, 0, 0.5,
+        -1.882500, 1.290000, -1,                0.5, 0, 0.5,
+        -1.777500, 1.290000, -1,                0.5, 0, 0.5,
+        -2.145000, -0.198000, -1,               0.5, 0, 0.5,
+        -2.415000, -0.198000, -1,               0.5, 0, 0.5,
+        -2.464500, -0.396000, -1,               0.5, 0, 0.5,
+
+    ];
+
+    var indices1 = [
+        // Depan
+        0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 0,
+
+        // Belakang
+        10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 10
+        // Sisi
+    ];
+
+    var vertices7 = [
+        // Depan
+        -1.350000, 0.000000, 0,         1, 0, 1,
+        -0.750000, 2.400000, 0,         1, 0, 1,
+        -1.800000, 2.400000, 0,         1, 0, 1,
+        -1.800000, 1.800000, 0,         1, 0, 1,
+        -1.350000, 1.800000, 0,         1, 0, 1,
+        -1.800000, 0.000000, 0,         1, 0, 1,
+        -1.650000, 0.000000, 0,         1, 0, 1,
+        -1.155000, 1.980000, 0,         1, 0, 1,
+        -1.650000, 1.980000, 0,         1, 0, 1,
+        -1.650000, 2.160000, 0,         1, 0, 1,
+        -0.960000, 2.160000, 0,         1, 0, 1,
+        -1.500000, 0.000000, 0,         1, 0, 1,
+
+        // Belakang
+        -1.350000, 0.000000, -1,         0.5, 0, 0.5,
+        -0.750000, 2.400000, -1,         0.5, 0, 0.5,
+        -1.800000, 2.400000, -1,         0.5, 0, 0.5,
+        -1.800000, 1.800000, -1,         0.5, 0, 0.5,
+        -1.350000, 1.800000, -1,         0.5, 0, 0.5,
+        -1.800000, 0.000000, -1,         0.5, 0, 0.5,
+        -1.650000, 0.000000, -1,         0.5, 0, 0.5,
+        -1.155000, 1.980000, -1,         0.5, 0, 0.5,
+        -1.650000, 1.980000, -1,         0.5, 0, 0.5,
+        -1.650000, 2.160000, -1,         0.5, 0, 0.5,
+        -0.960000, 2.160000, -1,         0.5, 0, 0.5,
+        -1.500000, 0.000000, -1,         0.5, 0, 0.5,
+    ];
+
+    var indices7 = [
+        0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 0,
+        12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 12
+    ];
+
     var objects = [
         {
             name: 'M',
@@ -192,6 +262,20 @@ function main() {
             indices: indicesA,
             length: 20,
             type: gl.TRIANGLES,
+        },
+        {
+            name: '1',
+            vertices: vertices1,
+            indices: indices1,
+            length: 20,
+            type: gl.LINES,
+        },
+        {
+            name: '7',
+            vertices: vertices7,
+            indices: indices7,
+            length: 24,
+            type: gl.LINES,
         },
     ]
 
@@ -236,10 +320,12 @@ function main() {
     var thetaX = 0.0;
     var thetaY = 0.0;
     var freeze = false;
-    var horizontalSpeed = 0.0;
-    var verticalSpeed = 0.0;
+    var horizontalSpeed = 0.0177;
+    var canvasWidth = 9;
     var horizontalDelta = 0.0;
     var verticalDelta = 0.0;
+    var scaleSpeed = 0.05;
+    var scaleDelta = 0;
 
     // Variabel pointer ke GLSL
     var uModel = gl.getUniformLocation(shaderProgram, "uModel");
@@ -288,35 +374,44 @@ function main() {
 
         gl.drawElements(glType, indices.length, gl.UNSIGNED_SHORT, 0);
     }
-    
-    function rotateM() {
-        var model = mat4.create();
-        mat4.rotateX(model, model, theta);
 
+    const translate1 = () =>{
+        var model = mat4.create();
+    
+        if (horizontalDelta >= (canvasWidth/2+2) || horizontalDelta <= (-canvasWidth/2+2)) {
+          horizontalSpeed = horizontalSpeed * -1;
+        }
+    
+        horizontalDelta += horizontalSpeed;
+    
+        mat4.translate(model, model, [horizontalDelta, verticalDelta, 0.0]);
+        
         var uModel = gl.getUniformLocation(shaderProgram, "uModel");
         var uView = gl.getUniformLocation(shaderProgram, "uView");
-        
         var uProjection = gl.getUniformLocation(shaderProgram, "uProjection");
-        gl.uniformMatrix4fv(uModel, false, model);
+    
+        gl.uniformMatrix4fv(uModel,false, model);
         gl.uniformMatrix4fv(uView, false, view);
         gl.uniformMatrix4fv(uProjection, false, perspective);
-        drawing(objects[0].vertices, objects[0].indices, 0, objects[0].length, objects[0].type);
-    }
+    
+        draw(objects[2].vertices, objects[2].indices, 0, objects[2].length, objects[2].type);
+      }
 
     function onKeydown(event) {
-        if (event.keyCode == 37) {
-            thetaY += -0.1
+        if (event.keyCode == 37) { // Kiri
+            thetaY += 0.1
         }
-        if (event.keyCode == 39) {  // a
-            thetaY += 0.1;
+        if (event.keyCode == 39) {  // Kanan
+            thetaY += -0.1;
         }
-        // Gerakan vertikal: w ke atas, s ke bawah
-        if (event.keyCode == 38) {  
+    
+        if (event.keyCode == 38) {  // Atas
             thetaX += -0.1
-        } else if (event.keyCode == 40) {
+        } else if (event.keyCode == 40) { // Bawah
             thetaX += 0.1
         }
     }
+
     function onKeyup(event) {
         if (event.keyCode == 32) freeze = !freeze;
         if (event.keyCode == 65 || event.keyCode == 68) horizontalSpeed = 0.0;
@@ -333,33 +428,70 @@ function main() {
         //            Merah     Hijau   Biru    Transparansi
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-        var model = mat4.create(); // Membuat matriks identitas
+        var modelM = mat4.create(); // Membuat matriks identitas
         // mat4.translate(
         //     model, model, [horizontalDelta, verticalDelta, 0.0]
         // );
         mat4.rotateY(
-            model, model, thetaY
+            modelM, modelM, thetaY
         );
 
-        gl.uniformMatrix4fv(uModel, false, model);
+        gl.uniformMatrix4fv(uModel, false, modelM);
         gl.uniformMatrix4fv(uView, false, view);
         gl.uniformMatrix4fv(uProjection, false, perspective);
 
         draw(objects[0].vertices, objects[0].indices, 0, objects[0].length, objects[0].type);
 
-        var model = mat4.create(); // Membuat matriks identitas
+        var modelA = mat4.create(); // Membuat matriks identitas
         // mat4.translate(
         //     model, model, [horizontalDelta, verticalDelta, 0.0]
         // );
         mat4.rotateX(
-            model, model, thetaX
+            modelA, modelA, thetaX
         );
 
-        gl.uniformMatrix4fv(uModel, false, model);
+        gl.uniformMatrix4fv(uModel, false, modelA);
         gl.uniformMatrix4fv(uView, false, view);
         gl.uniformMatrix4fv(uProjection, false, perspective);
 
         draw(objects[1].vertices, objects[1].indices, 0, objects[1].length, objects[1].type);
+        
+        // Translation tapi gagal :(
+        // var model1 = mat4.create(); // Membuat matriks identitas
+        
+        // if((horizontalDelta >= canvasWidth/2) || (horizontalDelta <= (canvasWidth/2)+1))
+        //     horizontalSpeed = horizontalSpeed * -1;
+        
+        // horizontalDelta += horizontalSpeed;
+        // mat4.translate(
+        //     model1, model1, [horizontalDelta, verticalDelta, 0.0]
+        // );
+
+        // gl.uniformMatrix4fv(uModel, false, model1);
+        // gl.uniformMatrix4fv(uView, false, view);
+        // gl.uniformMatrix4fv(uProjection, false, perspective);
+
+        // draw(objects[2].vertices, objects[2].indices, 0, objects[2].length, objects[2].type);
+        
+        // Angka 7 Scaling
+        var model7 = mat4.create(); 
+
+        if (scaleDelta >= 2 || scaleDelta <= -0.5) {
+            scaleSpeed = scaleSpeed * -1;
+        }
+        
+        scaleDelta += scaleSpeed;
+
+        mat4.translate(model7, model7, [0, 0, scaleDelta]);
+
+        gl.uniformMatrix4fv(uModel, false, model7);
+        gl.uniformMatrix4fv(uView, false, view);
+        gl.uniformMatrix4fv(uProjection, false, perspective);
+
+        draw(objects[3].vertices, objects[3].indices, 0, objects[3].length, objects[3].type);
+        
+        translate1();
+        // scale7();
 
         requestAnimationFrame(render);
     }
