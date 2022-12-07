@@ -248,6 +248,35 @@ function main() {
         12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 12
     ];
 
+    var verticesCube = [
+        // Depan
+        1, 1, 1,    0, 0, 1,      // 0 Atas kanan
+        1, -1, 1,    0, 0, 1,     // 1 Bawah Kanan
+        -1, -1, 1,    0, 0, 1,    // 2 Bawah Kiri
+        -1, 1, 1,   0, 0, 1,      // 3 Atas kiri
+
+        // Belakang
+        1, 1, -1,    0, 0, 1,      // 4 Atas kanan
+        1, -1, -1,    0, 0, 1,     // 5 Bawah Kanan
+        -1, -1, -1,    0, 0, 1,    // 6 Bawah Kiri
+        -1, 1, -1,   0, 0, 1,      // 7 Atas kiri
+    ]
+
+    var indicesCube = [
+        // Depan
+        0, 1, 2,    2, 3, 0,
+        // Belakang
+        4, 5, 6,    6, 7, 4,
+        // Kiri
+        2, 3, 6,     3, 6, 7,
+        // Kanan
+        0, 1, 5,     0, 4, 5,
+        // Atas
+        0, 3, 7,      0, 4, 7,
+        // Bawah
+        1, 2, 5,    2, 5, 6
+    ];
+
     var objects = [
         {
             name: 'M',
@@ -277,6 +306,14 @@ function main() {
             length: 24,
             type: gl.LINES,
         },
+        {
+            name: 'Cube',
+            vertices: verticesCube,
+            indices: indicesCube,
+            length: 4,
+            type: gl.TRIANGLES,
+        },
+
     ]
 
     // Vertex shader
@@ -319,6 +356,8 @@ function main() {
 
     var thetaX = 0.0;
     var thetaY = 0.0;
+    var moveZ = 0.0;
+    var moveX = 0.0;
     var freeze = false;
     var horizontalSpeed = 0.0177;
     var canvasWidth = 9;
@@ -396,6 +435,7 @@ function main() {
     
         draw(objects[2].vertices, objects[2].indices, 0, objects[2].length, objects[2].type);
       }
+    
 
     function onKeydown(event) {
         if (event.keyCode == 37) { // Kiri
@@ -409,6 +449,19 @@ function main() {
             thetaX += -0.1
         } else if (event.keyCode == 40) { // Bawah
             thetaX += 0.1
+        }
+
+        if (event.keyCode == 75) { // Depan
+            moveZ += 0.1
+        }
+        else if (event.keyCode == 73) {  // Belakang
+            moveZ += -0.1;
+        }
+        if (event.keyCode == 76) { // Depan
+            moveX += 0.1
+        }
+        else if (event.keyCode == 74) {  // Belakang
+            moveX += -0.1;
         }
     }
 
@@ -492,6 +545,17 @@ function main() {
         
         translate1();
         // scale7();
+
+        // Cube
+        var modelCube = mat4.create(); 
+
+        mat4.translate(modelCube, modelCube, [moveX, 0.0, moveZ]);
+
+        gl.uniformMatrix4fv(uModel, false, modelCube);
+        gl.uniformMatrix4fv(uView, false, view);
+        gl.uniformMatrix4fv(uProjection, false, perspective);
+
+        draw(objects[4].vertices, objects[4].indices, 0, objects[4].length, objects[4].type);
 
         requestAnimationFrame(render);
     }
