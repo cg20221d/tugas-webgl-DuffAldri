@@ -18,5 +18,6 @@ Hasil:
 https://duffaldri.com/+WebGLDup
 
 ## Tugas 3
+Yang dikerjakan: 1, 3, 5, 6, 9, 10
 Hasil:
 ![Tugas 3](./assets/tugas3.jpg)
