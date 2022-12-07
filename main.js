@@ -549,7 +549,7 @@ function main() {
         // Cube
         var modelCube = mat4.create(); 
 
-        mat4.translate(modelCube, modelCube, [moveX, 0.0, moveZ]);
+        mat4.translate(modelCube, modelCube, [moveX, 0, moveZ]);
 
         gl.uniformMatrix4fv(uModel, false, modelCube);
         gl.uniformMatrix4fv(uView, false, view);
