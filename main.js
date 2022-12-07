@@ -143,16 +143,16 @@ function main() {
 
     var verticesCube = [
         // Depan
-        1, 1, 1,    0, 0, 1,      // 0 Atas kanan
-        1, -1, 1,    0, 0, 1,     // 1 Bawah Kanan
-        -1, -1, 1,    0, 0, 1,    // 2 Bawah Kiri
-        -1, 1, 1,   0, 0, 1,      // 3 Atas kiri
+        0.5, 0.5, 0.5,    0, 0, 1,      // 0 Atas kanan
+        0.5, -0.5, 0.5,    0, 0, 1,     // 0.5 Bawah Kanan
+        -0.5, -0.5, 0.5,    0, 0, 1,    // 2 Bawah Kiri
+        -0.5, 0.5, 0.5,   0, 0, 1,      // 3 Atas kiri
 
         // Belakang
-        1, 1, -1,    0, 0, 1,      // 4 Atas kanan
-        1, -1, -1,    0, 0, 1,     // 5 Bawah Kanan
-        -1, -1, -1,    0, 0, 1,    // 6 Bawah Kiri
-        -1, 1, -1,   0, 0, 1,      // 7 Atas kiri
+        0.5, 0.5, -0.5,    0, 0, 1,      // 4 Atas kanan
+        0.5, -0.5, -0.5,    0, 0, 1,     // 5 Bawah Kanan
+        -0.5, -0.5, -0.5,    0, 0, 1,    // 6 Bawah Kiri
+        -0.5, 0.5, -0.5,   0, 0, 1,      // 7 Atas kiri
     ]
 
     var indicesCube = [
@@ -203,6 +203,7 @@ function main() {
         uniform mat4 uView;
         uniform mat4 uProjection;
         varying vec3 vColor; // Fragment Color
+        
 
         void main() {
             gl_Position = uProjection * uView * uModel * vec4(aPosition, 1.0);

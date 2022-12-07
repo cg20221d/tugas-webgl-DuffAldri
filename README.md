@@ -16,3 +16,7 @@ Hasil:
 ![Tugas 2](./assets/tugas2.jpg)
 
 https://duffaldri.com/+WebGLDup
+
+## Tugas 3
+Hasil:
+![Tugas 3](./assets/tugas3.jpg)
