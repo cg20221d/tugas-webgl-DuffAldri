@@ -339,7 +339,7 @@ function main() {
 
     function render() {
         gl.enable(gl.DEPTH_TEST);
-        gl.clearColor(0.125, 0.125, 0.15, 1);
+        gl.clearColor(0.7, 0.7, 0.7, 1);
         //            Merah     Hijau   Biru    Transparansi
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
